@@ -16,6 +16,12 @@ public class ChessBoard {
     }
 
     public boolean isLegalBoardPosition(int xCoordinate, int yCoordinate) {
-        throw new UnsupportedOperationException("Need to implement ChessBoard.IsLegalBoardPosition()");
+        if( xCoordinate > MAX_BOARD_WIDTH || xCoordinate < 0 ) {
+            return false;
+        }
+        if( yCoordinate > MAX_BOARD_HEIGHT || yCoordinate < 0 ) {
+            return false;
+        }
+        return true;
     }
 }
