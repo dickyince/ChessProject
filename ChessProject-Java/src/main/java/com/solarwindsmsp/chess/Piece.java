@@ -1,0 +1,45 @@
+package com.solarwindsmsp.chess;
+
+public class Piece {
+    private int xCoordinate;
+    private int yCoordinate;
+    private PieceColor pieceColor;
+
+    public Piece(PieceColor pieceColor) {
+        this.pieceColor = pieceColor;
+    }
+
+    public int getXCoordinate() {
+        return xCoordinate;
+    }
+
+    public void setXCoordinate(int value) {
+        xCoordinate = value;
+    }
+
+    public int getYCoordinate() {
+        return yCoordinate;
+    }
+
+    public void setYCoordinate(int value) {
+        yCoordinate = value;
+    }
+
+    public PieceColor getPieceColor() {
+        return pieceColor;
+    }
+
+    private void setPieceColor(PieceColor value) {
+        pieceColor = value;
+    }
+
+    @Override
+    public String toString() {
+        return getCurrentPositionAsString();
+    }
+
+    protected String getCurrentPositionAsString() {
+        String eol = System.lineSeparator();
+        return String.format("Current X: {1}{0}Current Y: {2}{0}Piece Color: {3}", eol, xCoordinate, yCoordinate, pieceColor);
+    }
+}

@@ -2,17 +2,30 @@ package com.solarwindsmsp.chess;
 
 public class ChessBoard {
 
-    public static int MAX_BOARD_WIDTH = 7;
-    public static int MAX_BOARD_HEIGHT = 7;
+    public static int MAX_BOARD_WIDTH = 8;
+    public static int MAX_BOARD_HEIGHT = 8;
 
-    private Pawn[][] pieces;
+    private Piece[][] pieces;
+    private int numberOfBlackPawns;
 
     public ChessBoard() {
-        pieces = new Pawn[MAX_BOARD_WIDTH][MAX_BOARD_HEIGHT];
+        pieces = new Piece[MAX_BOARD_WIDTH][MAX_BOARD_HEIGHT];
+        numberOfBlackPawns = 0;
     }
 
-    public void addPiece(Pawn pawn, int xCoordinate, int yCoordinate, PieceColor pieceColor) {
-        throw new UnsupportedOperationException("Need to implement ChessBoard.add()");
+    public boolean addPiece(Piece piece) {
+        int xCoordinate = piece.getXCoordinate();
+        int yCoordinate = piece.getYCoordinate();
+        if(pieces[xCoordinate][yCoordinate] == null) {
+            if(piece instanceof Pawn) {
+                if (numberOfBlackPawns < 8) {
+                    pieces[xCoordinate][yCoordinate] = piece;
+                    numberOfBlackPawns++;
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public boolean isLegalBoardPosition(int xCoordinate, int yCoordinate) {
