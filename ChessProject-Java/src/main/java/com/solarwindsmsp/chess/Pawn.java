@@ -13,6 +13,7 @@ public class Pawn extends Piece{
 
         if(getXCoordinate() == newX && getYCoordinate() - newY == 1) {
             if(getChessBoard().isLegalBoardPosition(newX, newY)) {
+                getChessBoard().movePiece(this, newX, newY);
                 setYCoordinate(newY);
                 return true;
             }

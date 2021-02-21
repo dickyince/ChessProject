@@ -28,6 +28,17 @@ public class ChessBoard {
         return false;
     }
 
+    public boolean movePiece(Piece piece, int newX, int newY) {
+        if(piece != null && piece == pieces[piece.getXCoordinate()][piece.getYCoordinate()]) {
+            if(pieces[newX][newY] == null) {
+                pieces[newX][newY] = piece;
+                pieces[piece.getXCoordinate()][piece.getYCoordinate()] = null;
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean isLegalBoardPosition(int xCoordinate, int yCoordinate) {
         if( xCoordinate > MAX_BOARD_WIDTH || xCoordinate < 0 ) {
             return false;

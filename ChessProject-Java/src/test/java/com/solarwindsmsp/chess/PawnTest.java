@@ -5,6 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -45,6 +46,7 @@ public class PawnTest {
         assertEquals(5,testSubject.getXCoordinate());
         assertEquals(6, testSubject.getYCoordinate());
         verify(mockChessBoard, never()).isLegalBoardPosition(anyInt(), anyInt());
+        verify(mockChessBoard, never()).movePiece(any(Pawn.class), anyInt(), anyInt());
     }
 
     @Test
@@ -57,6 +59,7 @@ public class PawnTest {
         assertEquals(7,testSubject.getXCoordinate());
         assertEquals(6, testSubject.getYCoordinate());
         verify(mockChessBoard, never()).isLegalBoardPosition(anyInt(), anyInt());
+        verify(mockChessBoard, never()).movePiece(any(Pawn.class), anyInt(), anyInt());
     }
 
     @Test
@@ -69,6 +72,7 @@ public class PawnTest {
         assertEquals(5,testSubject.getXCoordinate());
         assertEquals(6, testSubject.getYCoordinate());
         verify(mockChessBoard, never()).isLegalBoardPosition(anyInt(), anyInt());
+        verify(mockChessBoard, never()).movePiece(any(Pawn.class), anyInt(), anyInt());
     }
 
     @Test
@@ -81,6 +85,7 @@ public class PawnTest {
         assertEquals(0,testSubject.getXCoordinate());
         assertEquals(6, testSubject.getYCoordinate());
         verify(mockChessBoard, never()).isLegalBoardPosition(anyInt(), anyInt());
+        verify(mockChessBoard, never()).movePiece(any(Pawn.class), anyInt(), anyInt());
     }
 
     @Test
@@ -93,6 +98,7 @@ public class PawnTest {
         assertEquals(5,testSubject.getXCoordinate());
         assertEquals(6, testSubject.getYCoordinate());
         verify(mockChessBoard, never()).isLegalBoardPosition(anyInt(), anyInt());
+        verify(mockChessBoard, never()).movePiece(any(Pawn.class), anyInt(), anyInt());
     }
 
     @Test
@@ -105,6 +111,7 @@ public class PawnTest {
         assertEquals(5,testSubject.getXCoordinate());
         assertEquals(7, testSubject.getYCoordinate());
         verify(mockChessBoard, never()).isLegalBoardPosition(anyInt(), anyInt());
+        verify(mockChessBoard, never()).movePiece(any(Pawn.class), anyInt(), anyInt());
     }
 
     @Test
@@ -117,6 +124,7 @@ public class PawnTest {
         assertEquals(5,testSubject.getXCoordinate());
         assertEquals(6, testSubject.getYCoordinate());
         verify(mockChessBoard, never()).isLegalBoardPosition(anyInt(), anyInt());
+        verify(mockChessBoard, never()).movePiece(any(Pawn.class), anyInt(), anyInt());
     }
 
     @Test
@@ -129,6 +137,7 @@ public class PawnTest {
         assertEquals(5,testSubject.getXCoordinate());
         assertEquals(0, testSubject.getYCoordinate());
         verify(mockChessBoard).isLegalBoardPosition(5, -1);
+        verify(mockChessBoard, never()).movePiece(any(Pawn.class), anyInt(), anyInt());
     }
 
     @Test
@@ -142,6 +151,7 @@ public class PawnTest {
         assertEquals(5,testSubject.getXCoordinate());
         assertEquals(5, testSubject.getYCoordinate());
         verify(mockChessBoard).isLegalBoardPosition(5,5);
+        verify(mockChessBoard).movePiece(testSubject, 5, 5);
     }
 
     @Test
@@ -154,6 +164,7 @@ public class PawnTest {
         assertEquals(5,testSubject.getXCoordinate());
         assertEquals(6, testSubject.getYCoordinate());
         verify(mockChessBoard, never()).isLegalBoardPosition(anyInt(), anyInt());
+        verify(mockChessBoard, never()).movePiece(any(Pawn.class), anyInt(), anyInt());
     }
 
 }

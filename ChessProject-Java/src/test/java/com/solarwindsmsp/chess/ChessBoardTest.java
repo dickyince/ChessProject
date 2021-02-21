@@ -7,6 +7,8 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.times;
 
 public class ChessBoardTest {
 
@@ -98,5 +100,44 @@ public class ChessBoardTest {
                 assertFalse(piecePlaced);
             }
         }
+    }
+
+    @Test
+    public void testMovePiece_False_When_Piece_Is_Null() {
+        boolean pieceMoved = testSubject.movePiece(null, 0, 0);
+        assertFalse(pieceMoved);
+    }
+
+    @Test
+    public void testMovePiece_False_When_Piece_Not_On_Board() {
+        when(mockPawn.getXCoordinate()).thenReturn(5);
+        when(mockPawn.getYCoordinate()).thenReturn(6);
+        boolean pieceMoved = testSubject.movePiece(mockPawn, 5, 5);
+        assertFalse(pieceMoved);
+        verify(mockPawn, times(1)).getXCoordinate();
+        verify(mockPawn, times(1)).getYCoordinate();
+    }
+
+    @Test
+    public void testMovePiece_True_When_Piece_On_Board_And_Space_Free() {
+        when(mockPawn.getXCoordinate()).thenReturn(5);
+        when(mockPawn.getYCoordinate()).thenReturn(6);
+        assertTrue(testSubject.addPiece(mockPawn));
+        boolean pieceMoved = testSubject.movePiece(mockPawn, 5, 5);
+        assertTrue(pieceMoved);
+        verify(mockPawn, times(3)).getXCoordinate();
+        verify(mockPawn, times(3)).getYCoordinate();
+    }
+
+    @Test
+    public void testMovePiece_False_When_Piece_On_Board_But_Space_Occupied() {
+        when(mockPawn.getXCoordinate()).thenReturn(5);
+        when(mockPawn.getYCoordinate()).thenReturn(5,6);
+        assertTrue(testSubject.addPiece(mockPawn));
+        assertTrue(testSubject.addPiece(mockPawn));
+        boolean pieceMoved = testSubject.movePiece(mockPawn, 5, 5);
+        assertFalse(pieceMoved);
+        verify(mockPawn, times(3)).getXCoordinate();
+        verify(mockPawn, times(3)).getYCoordinate();
     }
 }
