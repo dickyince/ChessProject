@@ -4,6 +4,7 @@ public class Piece {
     private int xCoordinate;
     private int yCoordinate;
     private PieceColor pieceColor;
+    private ChessBoard chessBoard;
 
     public Piece(PieceColor pieceColor) {
         this.pieceColor = pieceColor;
@@ -31,6 +32,18 @@ public class Piece {
 
     private void setPieceColor(PieceColor value) {
         pieceColor = value;
+    }
+
+    public ChessBoard getChessBoard() {
+        return chessBoard;
+    }
+
+    public void setChessBoard(ChessBoard chessBoard) {
+        this.chessBoard = chessBoard;
+    }
+
+    public boolean addToBoard() {
+        throw new UnsupportedOperationException("Need to implement Piece.addToBoard()") ;
     }
 
     @Override

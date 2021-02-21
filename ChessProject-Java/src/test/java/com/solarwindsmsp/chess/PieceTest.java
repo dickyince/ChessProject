@@ -22,14 +22,14 @@ public class PieceTest {
 
     @Test
     public void testAddToBoard_False_When_No_Chessboard_Set() {
-        boolean addedToBoard = testSubject.addToBaord();
+        boolean addedToBoard = testSubject.addToBoard();
         assertFalse(addedToBoard);
     }
 
     @Test
     public void testAddToBoard_False_When_No_X_Coordinate_Set() {
         testSubject.setChessBoard(mockChessBoard);
-        boolean addedToBoard = testSubject.addToBaord();
+        boolean addedToBoard = testSubject.addToBoard();
         assertFalse(addedToBoard);
     }
 
@@ -37,7 +37,7 @@ public class PieceTest {
     public void testAddToBoard_False_When_No_Y_Coordinate_Set() {
         testSubject.setChessBoard(mockChessBoard);
         testSubject.setXCoordinate(0);
-        boolean addedToBoard = testSubject.addToBaord();
+        boolean addedToBoard = testSubject.addToBoard();
         assertFalse(addedToBoard);
     }
 
