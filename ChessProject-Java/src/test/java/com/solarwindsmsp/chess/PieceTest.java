@@ -2,9 +2,13 @@ package com.solarwindsmsp.chess;
 
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
 
 public class PieceTest {
 
@@ -31,6 +35,7 @@ public class PieceTest {
         testSubject.setChessBoard(mockChessBoard);
         boolean addedToBoard = testSubject.addToBoard();
         assertFalse(addedToBoard);
+        verify(mockChessBoard, never()).addPiece(testSubject);
     }
 
     @Test
@@ -39,6 +44,7 @@ public class PieceTest {
         testSubject.setXCoordinate(0);
         boolean addedToBoard = testSubject.addToBoard();
         assertFalse(addedToBoard);
+        verify(mockChessBoard, never()).addPiece(testSubject);
     }
 
     @Test
@@ -49,6 +55,7 @@ public class PieceTest {
         testSubject.setYCoordinate(0);
         boolean addedToBoard = testSubject.addToBoard();
         assertTrue(addedToBoard);
+        verify(mockChessBoard, times(1)).addPiece(testSubject);
     }
 
     @Test
@@ -59,5 +66,6 @@ public class PieceTest {
         testSubject.setYCoordinate(0);
         boolean addedToBoard = testSubject.addToBoard();
         assertFalse(addedToBoard);
+        verify(mockChessBoard, times(1)).addPiece(testSubject);
     }
 }

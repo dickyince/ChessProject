@@ -1,8 +1,8 @@
 package com.solarwindsmsp.chess;
 
 public class Piece {
-    private int xCoordinate;
-    private int yCoordinate;
+    private int xCoordinate = -1;
+    private int yCoordinate = -1;
     private PieceColor pieceColor;
     private ChessBoard chessBoard;
 
@@ -43,7 +43,10 @@ public class Piece {
     }
 
     public boolean addToBoard() {
-        throw new UnsupportedOperationException("Need to implement Piece.addToBoard()") ;
+        if(chessBoard == null || xCoordinate == -1 || yCoordinate == -1) {
+            return false;
+        }
+        return chessBoard.addPiece(this);
     }
 
     @Override
