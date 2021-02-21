@@ -128,7 +128,7 @@ public class PawnTest {
         assertFalse(moved);
         assertEquals(5,testSubject.getXCoordinate());
         assertEquals(0, testSubject.getYCoordinate());
-        verify(mockChessBoard, never()).isLegalBoardPosition(anyInt(), anyInt());
+        verify(mockChessBoard).isLegalBoardPosition(5, -1);
     }
 
     @Test
