@@ -14,12 +14,12 @@ public class ChessBoardTest {
     private ChessBoard testSubject;
 
     // Mocks used for test
-    private Piece testPawn;
+    private Piece mockPawn;
 
     @Before
     public void setUp() {
         testSubject = new ChessBoard();
-        testPawn = mock(Pawn.class);
+        mockPawn = mock(Pawn.class);
     }
 
     @Test
@@ -70,27 +70,27 @@ public class ChessBoardTest {
 
     @Test
     public void testAddPiece_True_For_Empty_Square() {
-        when(testPawn.getXCoordinate()).thenReturn(0);
-        when(testPawn.getYCoordinate()).thenReturn(0);
-        boolean pieceAdded = testSubject.addPiece(testPawn);
+        when(mockPawn.getXCoordinate()).thenReturn(0);
+        when(mockPawn.getYCoordinate()).thenReturn(0);
+        boolean pieceAdded = testSubject.addPiece(mockPawn);
         assertTrue(pieceAdded);
     }
 
     @Test
     public void testAddPiece_False_For_Occupied_Square() {
-        when(testPawn.getXCoordinate()).thenReturn(0);
-        when(testPawn.getYCoordinate()).thenReturn(0);
-        testSubject.addPiece(testPawn);
-        boolean pieceAdded = testSubject.addPiece(testPawn);
+        when(mockPawn.getXCoordinate()).thenReturn(0);
+        when(mockPawn.getYCoordinate()).thenReturn(0);
+        testSubject.addPiece(mockPawn);
+        boolean pieceAdded = testSubject.addPiece(mockPawn);
         assertFalse(pieceAdded);
     }
 
     @Test
     public void testLimits_The_Number_Of_Pawns() {
-        when(testPawn.getXCoordinate()).thenReturn(0,1,2,3,4,5,6,7,0,1);
-        when(testPawn.getYCoordinate()).thenReturn(0,0,0,0,0,0,0,0,1,1);
+        when(mockPawn.getXCoordinate()).thenReturn(0,1,2,3,4,5,6,7,0,1);
+        when(mockPawn.getYCoordinate()).thenReturn(0,0,0,0,0,0,0,0,1,1);
         for (int i = 0; i < 10; i++) {
-            boolean piecePlaced = testSubject.addPiece(testPawn);
+            boolean piecePlaced = testSubject.addPiece(mockPawn);
             if(i < 8) {
                 assertTrue(piecePlaced);
             }
